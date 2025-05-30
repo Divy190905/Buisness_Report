@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  background-color: #f9f9f9;
+}
+
+.sidebar {
+  width: 200px;
+  min-height: 100%;
+  background-color: #333;
+  color: white;
+}
+
+.content-area {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.top-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.upload-section,
+.result-column {
+  flex: 1;
+  min-width: 300px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}

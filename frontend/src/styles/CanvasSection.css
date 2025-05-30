@@ -1,0 +1,37 @@
+.canvas-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+  }
+  
+  .canvas-toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .text-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .canvas-container {
+    min-height: 200px;
+    border: 1px dashed #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fefefe;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .canvas-item {
+    padding: 10px;
+    background-color: #eef;
+    border-radius: 5px;
+  }
+  
