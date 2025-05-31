@@ -2,8 +2,12 @@ import pandas as pd
 import numpy as np
 from groq import Groq
 import os
+from dotenv import load_dotenv
 
-client = Groq(api_key="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")
+# Load API key from environment
+load_dotenv()
+api_key = os.getenv("GROQ_API_KEY")
+client = Groq(api_key=api_key)
 
 def get_business_summary(file_path):
     df = pd.read_csv(file_path)

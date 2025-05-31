@@ -1,6 +1,13 @@
 import pandas as pd
 import re
 from groq import Groq
+import os
+from dotenv import load_dotenv
+
+# Load API key from environment
+load_dotenv()
+api_key = os.getenv("GROQ_API_KEY")
+client = Groq(api_key=api_key)
 
 def clean_code_response(code: str):
     # Remove markdown code blocks and leading explanation lines
@@ -18,7 +25,7 @@ def chat_loop(file_path, visualizer_callback):
     df = pd.read_csv(file_path)
     df.columns = df.columns.str.strip()
 
-    client = Groq(api_key="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")
+    
 
     print("\n📌 Enter your query to generate Python code (type 'done' to reset, 'exiit' to quit).")
 
