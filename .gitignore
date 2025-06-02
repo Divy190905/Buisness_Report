@@ -10,3 +10,8 @@ venv/
 python/.env
 
 python/.data
+
+# Ignore backend .env files
+backend/api/.env
+backend/.env
+**/.env
