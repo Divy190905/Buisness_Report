@@ -19,15 +19,47 @@ function App() {
   return (
     <div className="app-container">
       <Header />
-      <div className="main-content">
+      <div className="main-content" style={{ display: 'flex' }}>
         <Sidebar />
-        <div className="content-area">
-          <div className="top-section" style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
+        <div
+          className="content-area"
+          style={{
+            flex: 1,
+            overflowY: 'auto',
+            padding: '1rem',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          {/* Top Section: Upload and Result */}
+          <div
+            className="top-section"
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              width: '100%',
+              marginBottom: '2rem',
+            }}
+          >
             <UploadSection onSummary={setSummary} />
             <ResultColumn summary={summary} onAddToCanvas={addToCanvas} />
           </div>
-          <CanvasSection content={canvasContent} />
-          <QuerySection onReceiveResult={(result) => addToCanvas(result)} />
+
+          {/* Query Section */}
+          <div
+            className="query-section-wrapper"
+            style={{ marginBottom: '2rem' }}
+          >
+            <QuerySection onReceiveResult={(result) => addToCanvas(result)} />
+          </div>
+
+          {/* Canvas Section - Fill remaining space */}
+          <div
+            className="canvas-section-wrapper"
+            style={{ flexGrow: 1, minHeight: '90vh' }}
+          >
+            <CanvasSection content={canvasContent} />
+          </div>
         </div>
       </div>
       <Footer />
