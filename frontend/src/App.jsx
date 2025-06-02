@@ -5,14 +5,13 @@ import Sidebar from './components/Sidebar';
 import UploadSection from './components/UploadSection';
 import QuerySection from './components/QuerySection';
 import ResultColumn from './components/ResultColumn';
-import CanvasSection from './components/CanvasSection'; // You'll need to create this component
+import CanvasSection from './components/CanvasSection';
 import './index.css';
 
 function App() {
-  // State to store generated graphs/content
   const [canvasContent, setCanvasContent] = useState([]);
-  
-  // Function to add new content to the canvas
+  const [summary, setSummary] = useState('');
+
   const addToCanvas = (content) => {
     setCanvasContent([...canvasContent, content]);
   };
@@ -24,12 +23,10 @@ function App() {
         <Sidebar />
         <div className="content-area">
           <div className="top-section" style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
-            <UploadSection />
-            <ResultColumn onAddToCanvas={addToCanvas} />
+            <UploadSection onSummary={setSummary} />
+            <ResultColumn summary={summary} onAddToCanvas={addToCanvas} />
           </div>
-          
           <CanvasSection content={canvasContent} />
-          
           <QuerySection onReceiveResult={(result) => addToCanvas(result)} />
         </div>
       </div>

@@ -1,11 +1,15 @@
 import React from 'react';
 import '../styles/ResultColumn.css';
 
-export default function ResultColumn() {
+export default function ResultColumn({ summary }) {
   return (
     <section className="result-column">
       <h2>Report Summary</h2>
-      <p>Results will appear here after upload and analysis.</p>
+      {summary ? (
+        <div className="result-scroll-box" dangerouslySetInnerHTML={{ __html: summary }} />
+      ) : (
+        <p className="no-results">Results will appear here after upload and analysis.</p>
+      )}
     </section>
   );
 }

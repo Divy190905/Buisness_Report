@@ -6,6 +6,8 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   margin: 1rem;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .result-column h2 {
@@ -26,6 +28,32 @@
   border-radius: 2px;
 }
 
+/* Scrollable summary container */
+.result-scroll-box {
+  max-height: 450px;              /* Scrollable height */
+  overflow-y: auto;
+  padding-right: 1rem;
+  font-size: 1.1rem;              /* Larger font */
+  line-height: 1.7;
+  color: #4b5563;
+  white-space: pre-line;          /* Preserve line breaks */
+}
+
+/* Optional: custom scrollbar */
+.result-scroll-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.result-scroll-box::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}
+
+.result-scroll-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Reuse your existing card styles */
 .result-card {
   background-color: #f8fafc;
   border-radius: 8px;
