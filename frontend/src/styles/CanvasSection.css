@@ -1,11 +1,14 @@
 .canvas-section {
     padding: 1rem;
+    min-width: 1450px;
+    overflow-x: auto;
 }
 
 .canvas-content {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    min-width: 1400px;
 }
 
 .canvas-image {

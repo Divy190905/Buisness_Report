@@ -102,3 +102,7 @@ Thumbs.db
 *.tmp
 *.temp
 *.log
+
+# Database files
+*.sqlite3
+*.db
