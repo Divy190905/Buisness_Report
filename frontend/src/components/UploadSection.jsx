@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import '../styles/UploadSection.css';
 
-export default function UploadSection({ onSummary }) {
+export default function UploadSection({ onSummary, onFileId }) {
   const [file, setFile] = useState(null);
   const [dragActive, setDragActive] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -14,9 +14,9 @@ export default function UploadSection({ onSummary }) {
   const handleDrag = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
+    if (e.type === 'dragenter' || e.type === 'dragover') {
       setDragActive(true);
-    } else if (e.type === "dragleave") {
+    } else if (e.type === 'dragleave') {
       setDragActive(false);
     }
   };
@@ -29,7 +29,7 @@ export default function UploadSection({ onSummary }) {
     if (droppedFile && isValidFile(droppedFile.name)) {
       setFile(droppedFile);
     } else {
-      alert("Please upload a file with .xls, .xlsx, or .csv extension");
+      alert('Please upload a file with .xls, .xlsx, or .csv extension');
     }
   };
 
@@ -38,7 +38,7 @@ export default function UploadSection({ onSummary }) {
     if (selectedFile && isValidFile(selectedFile.name)) {
       setFile(selectedFile);
     } else {
-      alert("Only .xls, .xlsx, and .csv files are supported");
+      alert('Only .xls, .xlsx, and .csv files are supported');
     }
   };
 
@@ -71,6 +71,9 @@ export default function UploadSection({ onSummary }) {
 
       if (response.ok) {
         onSummary(data.summary || 'No summary returned.');
+        if (data.file_id && onFileId) {
+          onFileId(data.file_id); // ✅ Send file_id to parent
+        }
       } else {
         onSummary('Error: ' + (data.detail || JSON.stringify(data)));
       }
@@ -86,7 +89,7 @@ export default function UploadSection({ onSummary }) {
     <section className="upload-section">
       <h2>Upload Excel or CSV File</h2>
       <div
-        className={`file-upload-area ${dragActive ? "drag-over" : ""}`}
+        className={`file-upload-area ${dragActive ? 'drag-over' : ''}`}
         onDragEnter={handleDrag}
         onDragOver={handleDrag}
         onDragLeave={handleDrag}

@@ -11,16 +11,19 @@ import './index.css';
 function App() {
   const [canvasContent, setCanvasContent] = useState([]);
   const [summary, setSummary] = useState('');
+  const [fileId, setFileId] = useState(null);
 
   const addToCanvas = (content) => {
-    setCanvasContent([...canvasContent, content]);
+    setCanvasContent((prev) => [...prev, content]);
   };
 
   return (
     <div className="app-container">
       <Header />
+
       <div className="main-content" style={{ display: 'flex' }}>
         <Sidebar />
+
         <div
           className="content-area"
           style={{
@@ -31,7 +34,7 @@ function App() {
             flexDirection: 'column',
           }}
         >
-          {/* Top Section: Upload and Result */}
+          {/* Upload + Summary Section */}
           <div
             className="top-section"
             style={{
@@ -41,7 +44,10 @@ function App() {
               marginBottom: '2rem',
             }}
           >
-            <UploadSection onSummary={setSummary} />
+            <UploadSection
+              onSummary={setSummary}
+              onFileId={setFileId} // This should match with implementation in UploadSection
+            />
             <ResultColumn summary={summary} onAddToCanvas={addToCanvas} />
           </div>
 
@@ -50,10 +56,13 @@ function App() {
             className="query-section-wrapper"
             style={{ marginBottom: '2rem' }}
           >
-            <QuerySection onReceiveResult={(result) => addToCanvas(result)} />
+            <QuerySection
+              fileId={fileId}
+              onReceiveResult={addToCanvas}
+            />
           </div>
 
-          {/* Canvas Section - Fill remaining space */}
+          {/* Canvas Section */}
           <div
             className="canvas-section-wrapper"
             style={{ flexGrow: 1, minHeight: '90vh' }}
@@ -62,6 +71,7 @@ function App() {
           </div>
         </div>
       </div>
+
       <Footer />
     </div>
   );

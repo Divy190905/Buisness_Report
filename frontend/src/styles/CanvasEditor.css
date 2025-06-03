@@ -1,0 +1,180 @@
+.canvas-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f5f5f5;
+}
+
+.canvas-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  justify-content: flex-start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.toolbar-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.toolbar-btn:hover {
+  background: #f0f0f0;
+}
+
+.remove-btn {
+  background: #ff4444;
+  color: white;
+  border-color: #ff4444;
+}
+
+.remove-btn:hover {
+  background: #ff6666;
+}
+
+.text-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.text-controls select,
+.text-controls input {
+  padding: 0.25rem;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+
+.text-controls button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.text-controls button.active {
+  background: #007bff;
+  color: white;
+}
+
+.canvas-area {
+  position: relative;
+  width: 1400px; /* Increased width */
+  height: 900px;  /* Increased height proportionally */
+  background: white;
+  border: 2px solid #ddd;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.canvas-element {
+  position: absolute;
+  cursor: move;
+  user-select: none;
+  /* Add transition for smooth movement */
+  transition: none;
+}
+
+.canvas-element.selected {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+  /* Ensure selected elements are visible */
+  z-index: 1000;
+}
+
+/* Add some visual debugging */
+.canvas-element::before {
+  content: attr(data-id);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  font-size: 10px;
+  color: #666;
+  background: rgba(255,255,255,0.8);
+  padding: 2px 4px;
+  border-radius: 2px;
+  display: none;
+}
+
+.canvas-element.selected::before {
+  display: block;
+}
+
+.image-element {
+  border: 1px solid transparent;
+}
+
+.image-element img {
+  border-radius: 4px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.text-element {
+  border: 1px solid transparent;
+  min-width: 50px;
+  min-height: 20px;
+}
+
+.text-element.selected {
+  border-color: #007bff;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #007bff;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.resize-handle.top-left {
+  top: -6px;
+  left: -6px;
+  cursor: nw-resize;
+}
+
+.resize-handle.top-right {
+  top: -6px;
+  right: -6px;
+  cursor: ne-resize;
+}
+
+.resize-handle.bottom-left {
+  bottom: -6px;
+  left: -6px;
+  cursor: sw-resize;
+}
+
+.resize-handle.bottom-right {
+  bottom: -6px;
+  right: -6px;
+  cursor: se-resize;
+}
+
+.resize-handle:hover {
+  background: #0056b3;
+  transform: scale(1.1);
+}
