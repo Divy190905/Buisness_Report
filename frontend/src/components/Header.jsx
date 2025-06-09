@@ -1,10 +1,10 @@
 import React from 'react';
-import '../styles/Header.css';
+import '../styles/Footer.css';
 
-export default function Header() {
+export default function Footer() {
   return (
-    <header className="header">
-      <h1>Business Excel Report Analyzer</h1>
-    </header>
+    <footer className="footer">
+      <p>© 2025 Business Excel Report Analyzer</p>
+    </footer>
   );
 }

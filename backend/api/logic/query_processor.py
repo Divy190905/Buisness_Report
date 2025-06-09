@@ -12,6 +12,8 @@ load_dotenv()
 api_key = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=api_key)
 
+print("Loaded API Key:", os.getenv("GROQ_API_KEY"))
+
 # Global chat history per file path
 chat_sessions = {}
 
@@ -114,4 +116,3 @@ def get_query_answer(question: str, file_path: str) -> str:
 
     except Exception as e:
         raise RuntimeError(f"Answer generation failed: {e}")
-
