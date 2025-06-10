@@ -35,11 +35,15 @@ export default function QuerySection({ fileId, onReceiveResult }) {
       const data = await response.json();
       console.log("Response data:", data);
   
-      if (response.ok && data.image_path) {
+      if (response.ok && (data.images || data.image_path)) {
+        const imagePath = data.images ? data.images[0] : `http://localhost:8000${data.image_path}`;
+        
         onReceiveResult({
           type: 'image',
-          imagePath: `http://localhost:8000${data.image_path}`,
+          imagePath: imagePath,
+          code: data.code, // Pass the code along with the image
           query: query,
+          fileId: fileId, // Pass the file ID for code updates
         });
       } else if (data.error) {
         onReceiveResult({ 

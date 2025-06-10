@@ -99,7 +99,3 @@ class QueryAnswerAPIView(APIView):
             return Response({'answer': answer})
         except Exception as e:
             return Response({'error': str(e)}, status=500)
-
-
-
-

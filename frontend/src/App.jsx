@@ -67,7 +67,7 @@ function App() {
             className="canvas-section-wrapper"
             style={{ flexGrow: 1, minHeight: '90vh' }}
           >
-            <CanvasSection content={canvasContent} />
+            <CanvasSection content={canvasContent} fileId={fileId} />
           </div>
         </div>
       </div>

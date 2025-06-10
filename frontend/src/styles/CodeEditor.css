@@ -1,0 +1,98 @@
+.code-editor-overlay {
+    position: fixed;
+    z-index: 1000;
+    background: white;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-width: 90vw;
+    max-height: 80vh;
+  }
+  
+  .code-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e1e5e9;
+  }
+  
+  .code-editor-title {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .code-editor-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .run-button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  
+  .run-button:hover:not(:disabled) {
+    background: #218838;
+  }
+  
+  .run-button:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .code-editor-container {
+    border: none;
+    overflow: hidden;
+  }
+  
+  .code-editor-footer {
+    padding: 8px 15px;
+    background: #f8f9fa;
+    border-top: 1px solid #e1e5e9;
+    font-size: 12px;
+    color: #6c757d;
+  }
+  
+  .help-text {
+    font-style: italic;
+  }
+  
+  /* Hover indicator for images */
+  .image-element.has-code {
+    position: relative;
+  }
+  
+  .image-element.has-code::after {
+    content: '</>';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: monospace;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .image-element.has-code:hover::after {
+    opacity: 1;
+  }
+  
+  .image-element.code-editor-visible {
+    border: 2px solid #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+  }

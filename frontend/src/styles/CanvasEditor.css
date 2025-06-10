@@ -1,180 +1,327 @@
 .canvas-editor {
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  background: #f5f5f5;
+  background: #f8f9fa;
 }
 
 .canvas-toolbar {
   display: flex;
-  gap: 0.5rem;
-  padding: 0.5rem;
+  align-items: center;
+  padding: 10px 15px;
   background: white;
-  border-radius: 4px;
+  border-bottom: 1px solid #e1e5e9;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  justify-content: flex-start;
-  max-width: 1400px;
-  margin: 0 auto;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .toolbar-btn {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
-  background: white;
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
   transition: background-color 0.2s;
 }
 
 .toolbar-btn:hover {
-  background: #f0f0f0;
+  background: #0056b3;
 }
 
-.remove-btn {
-  background: #ff4444;
-  color: white;
-  border-color: #ff4444;
+.toolbar-btn.remove-btn {
+  background: #dc3545;
 }
 
-.remove-btn:hover {
-  background: #ff6666;
+.toolbar-btn.remove-btn:hover {
+  background: #c82333;
 }
 
-.text-controls {
+.z-index-controls {
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  padding: 0.5rem;
-  background: white;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  max-width: 1400px;
-  margin: 0 auto;
+  gap: 5px;
+  margin-left: 10px;
 }
 
-.text-controls select,
-.text-controls input {
-  padding: 0.25rem;
-  border: 1px solid #ddd;
-  border-radius: 2px;
-}
-
-.text-controls button {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #ddd;
-  background: white;
-  border-radius: 2px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.text-controls button.active {
-  background: #007bff;
-  color: white;
+.z-index-controls .toolbar-btn {
+  padding: 4px 8px;
+  font-size: 11px;
+  min-width: auto;
 }
 
 .canvas-area {
+  flex: 1;
   position: relative;
-  width: 1400px; /* Increased width */
-  height: 900px;  /* Increased height proportionally */
-  background: white;
-  border: 2px solid #ddd;
-  margin: 0 auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   overflow: hidden;
-  border-radius: 8px;
+  background: white;
+  background-image: 
+    radial-gradient(circle, #ccc 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
 }
 
 .canvas-element {
   position: absolute;
   cursor: move;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
   user-select: none;
-  /* Add transition for smooth movement */
-  transition: none;
 }
 
 .canvas-element.selected {
-  outline: 2px solid #007bff;
-  outline-offset: 2px;
-  /* Ensure selected elements are visible */
-  z-index: 1000;
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
 }
 
-/* Add some visual debugging */
-.canvas-element::before {
-  content: attr(data-id);
-  position: absolute;
-  top: -20px;
-  left: 0;
-  font-size: 10px;
-  color: #666;
-  background: rgba(255,255,255,0.8);
-  padding: 2px 4px;
-  border-radius: 2px;
-  display: none;
-}
-
-.canvas-element.selected::before {
-  display: block;
+.canvas-element:hover:not(.selected) {
+  border-color: #ccc;
 }
 
 .image-element {
-  border: 1px solid transparent;
+  position: relative;
 }
 
 .image-element img {
-  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   pointer-events: none;
   user-select: none;
 }
 
 .text-element {
-  border: 1px solid transparent;
-  min-width: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  word-wrap: break-word;
   min-height: 20px;
+  display: flex;
+  align-items: center;
 }
 
-.text-element.selected {
-  border-color: #007bff;
+.text-element input {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  font-family: inherit;
 }
 
 .resize-handle {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: #007bff;
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.resize-handle.top-left {
-  top: -6px;
-  left: -6px;
-  cursor: nw-resize;
-}
-
-.resize-handle.top-right {
-  top: -6px;
-  right: -6px;
-  cursor: ne-resize;
-}
-
-.resize-handle.bottom-left {
-  bottom: -6px;
-  left: -6px;
-  cursor: sw-resize;
-}
-
-.resize-handle.bottom-right {
-  bottom: -6px;
-  right: -6px;
-  cursor: se-resize;
+  z-index: 10;
 }
 
 .resize-handle:hover {
   background: #0056b3;
-  transform: scale(1.1);
+  transform: scale(1.2);
+}
+
+.resize-handle.top-left {
+  top: -4px;
+  left: -4px;
+  cursor: nw-resize;
+}
+
+.resize-handle.top-right {
+  top: -4px;
+  right: -4px;
+  cursor: ne-resize;
+}
+
+.resize-handle.bottom-left {
+  bottom: -4px;
+  left: -4px;
+  cursor: sw-resize;
+}
+
+.resize-handle.bottom-right {
+  bottom: -4px;
+  right: -4px;
+  cursor: se-resize;
+}
+
+.text-controls {
+  background: #f8f9fa;
+  border: 1px solid #e1e5e9;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.text-controls label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.text-controls input,
+.text-controls select {
+  margin-left: 5px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 13px;
+}
+
+.text-controls input[type="color"] {
+  width: 40px;
+  height: 30px;
+  padding: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.text-controls input[type="number"] {
+  width: 60px;
+}
+
+/* Hover indicator for images with code */
+.image-element.has-code {
+  position: relative;
+}
+
+.image-element.has-code::after {
+  content: '</>';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: monospace;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.image-element.has-code:hover::after {
+  opacity: 1;
+}
+
+.image-element.code-editor-visible {
+  border: 2px solid #28a745 !important;
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.3) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .canvas-toolbar {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  
+  .toolbar-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .text-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .z-index-controls {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+}
+
+/* Ensure proper layering */
+.canvas-area * {
+  position: relative;
+}
+
+/* Prevent text selection during drag */
+.canvas-editor.dragging * {
+  user-select: none !important;
+  pointer-events: none !important;
+}
+
+.canvas-editor.dragging .canvas-element.selected {
+  pointer-events: auto !important;
+}
+
+/* Loading states */
+.canvas-element.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.canvas-element.loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 10;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Smooth transitions */
+.canvas-element:not(.selected) {
+  transition: transform 0.1s ease, border-color 0.2s ease;
+}
+
+.canvas-element.selected {
+  transition: none;
+}
+
+/* Grid alignment helpers */
+.canvas-area.show-grid {
+  background-image: 
+    linear-gradient(rgba(0,0,0,.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Print styles */
+@media print {
+  .canvas-toolbar {
+    display: none;
+  }
+  
+  .text-controls {
+    display: none;
+  }
+  
+  .canvas-area {
+    background: white;
+  }
+  
+  .resize-handle {
+    display: none;
+  }
+  
+  .canvas-element {
+    border: none !important;
+    box-shadow: none !important;
+  }
 }

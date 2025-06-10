@@ -70,6 +70,11 @@ export default function UploadSection({ onSummary, onFileId }) {
       }
 
       if (response.ok) {
+        // Store file_id for later use
+        if (data.file_id) {
+          localStorage.setItem('currentFileId', data.file_id);
+        }
+
         onSummary(data.summary || 'No summary returned.');
         if (data.file_id && onFileId) {
           onFileId(data.file_id); // ✅ Send file_id to parent

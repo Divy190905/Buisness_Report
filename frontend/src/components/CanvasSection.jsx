@@ -2,7 +2,7 @@ import React from 'react';
 import CanvasEditor from './CanvasEditor';
 import '../styles/CanvasSection.css';
 
-export default function CanvasSection({ content }) {
+export default function CanvasSection({ content, fileId }) {
   return (
     <section className="canvas-section">
       <h2>Canvas</h2>
@@ -10,7 +10,10 @@ export default function CanvasSection({ content }) {
         {content.length === 0 && <p>No visualizations yet.</p>}
         
         {content.length > 0 && (
-          <CanvasEditor images={content.filter(item => item.type === 'image')} />
+          <CanvasEditor 
+            images={content.filter(item => item.type === 'image')} 
+            fileId={fileId}
+          />
         )}
 
         {/* Display messages separately */}
