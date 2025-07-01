@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import CodeEditor from './CodeEditor';
+import html2canvas from 'html2canvas';
 import '../styles/CanvasEditor.css';
 
 export default function CanvasEditor({ images = [], fileId }) {
@@ -311,6 +312,33 @@ export default function CanvasEditor({ images = [], fileId }) {
     }
   };
 
+  const handleDownloadCanvas = async () => {
+    if (!canvasRef.current) return;
+
+    const wasVisible = showCodeEditor;
+    setShowCodeEditor(false);
+
+    await new Promise((res) => setTimeout(res, 300));
+
+    html2canvas(canvasRef.current, {
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#ffffff'
+    }).then((canvas) => {
+      const link = document.createElement('a');
+      link.download = 'canvas.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+
+      if (wasVisible) {
+        setShowCodeEditor(true);
+      }
+    }).catch((err) => {
+      console.error('Download failed:', err);
+      alert('Failed to download canvas image.');
+    });
+  };
+
   const renderZIndexControls = () => {
     if (!selectedElement) return null;
     
@@ -361,6 +389,9 @@ export default function CanvasEditor({ images = [], fileId }) {
       <div className="canvas-toolbar">
         <button onClick={addText} className="toolbar-btn">
           Add Text
+        </button>
+        <button onClick={handleDownloadCanvas} className="toolbar-btn download-btn">
+          Download Canvas
         </button>
         {selectedElement && (
           <>

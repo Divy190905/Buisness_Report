@@ -33,3 +33,15 @@
     font-style: italic;
     padding: 2rem;
 }
+
+/* Download button styling */
+.download-btn {
+    background-color: #28a745 !important;
+    color: white !important;
+    border: none !important;
+    font-weight: bold;
+}
+
+.download-btn:hover {
+    background-color: #218838 !important;
+}
