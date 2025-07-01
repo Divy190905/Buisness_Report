@@ -1,10 +1,16 @@
 import React from 'react';
-import '../styles/Footer.css';
+import '../styles/Header.css';
 
-export default function Footer() {
+export default function Header({ toggleTheme, theme }) {
   return (
-    <footer className="footer">
-      <p>© 2025 Business Excel Report Analyzer</p>
-    </footer>
+    <header className="header">
+      <div className="header-content">
+        <span className="header-logo">📊</span>
+        <h1>DataViz Insights</h1>
+      </div>
+      <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+        {theme === 'dark' ? '☀️' : '🌙'}
+      </button>
+    </header>
   );
 }

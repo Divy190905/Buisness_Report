@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Sidebar from './components/Sidebar';
@@ -13,62 +13,50 @@ function App() {
   const [summary, setSummary] = useState('');
   const [fileId, setFileId] = useState(null);
 
+  const getInitialTheme = () => {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  };
+
+  const [theme, setTheme] = useState(getInitialTheme);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
   const addToCanvas = (content) => {
     setCanvasContent((prev) => [...prev, content]);
   };
 
   return (
     <div className="app-container">
-      <Header />
+      <Header toggleTheme={toggleTheme} theme={theme} />
 
-      <div className="main-content" style={{ display: 'flex' }}>
+      <div className="main-content">
         <Sidebar />
-
-        <div
-          className="content-area"
-          style={{
-            flex: 1,
-            overflowY: 'auto',
-            padding: '1rem',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
+        <div className="content-area">
           {/* Upload + Summary Section */}
-          <div
-            className="top-section"
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              width: '100%',
-              marginBottom: '2rem',
-            }}
-          >
-            <UploadSection
-              onSummary={setSummary}
-              onFileId={setFileId} // This should match with implementation in UploadSection
-            />
+          <section id="upload" className="top-section">
+            <UploadSection onSummary={setSummary} onFileId={setFileId} />
             <ResultColumn summary={summary} onAddToCanvas={addToCanvas} />
-          </div>
+          </section>
 
           {/* Query Section */}
-          <div
-            className="query-section-wrapper"
-            style={{ marginBottom: '2rem' }}
-          >
-            <QuerySection
-              fileId={fileId}
-              onReceiveResult={addToCanvas}
-            />
-          </div>
+          <section id="query" className="query-section-wrapper">
+            <QuerySection fileId={fileId} onReceiveResult={addToCanvas} />
+          </section>
 
           {/* Canvas Section */}
-          <div
-            className="canvas-section-wrapper"
-            style={{ flexGrow: 1, minHeight: '90vh' }}
-          >
+          <section id="canvas" className="canvas-section-wrapper">
             <CanvasSection content={canvasContent} fileId={fileId} />
-          </div>
+          </section>
         </div>
       </div>
 

@@ -1,22 +1,55 @@
 .header {
-  background: linear-gradient(135deg, #2c3e50 0%, #4a69bd 100%);
-  color: white;
+  background: var(--gradient-primary);
+  color: var(--text-primary);
   padding: 1.5rem 2rem;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-logo {
+  font-size: 2rem;
+  color: var(--accent-primary);
 }
 
 .header h1 {
   font-weight: 700;
   font-size: 1.8rem;
   margin: 0;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.7px;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  color: var(--text-primary);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.2);
+  color: var(--accent-primary);
 }
 
 @media (max-width: 768px) {
   .header h1 {
     font-size: 1.4rem;
+  }
+
+  .theme-toggle {
+    font-size: 1.2rem;
   }
 }

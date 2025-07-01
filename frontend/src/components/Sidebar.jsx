@@ -6,10 +6,24 @@ export default function Sidebar() {
     <aside className="sidebar">
       <nav>
         <ul>
-          <li>Dashboard</li>
-          <li>Upload</li>
-          <li>Reports</li>
-          <li>Settings</li>
+          <li>
+            <a href="#upload">
+              <span className="nav-icon">📤</span>
+              <span>Upload</span>
+            </a>
+          </li>
+          <li>
+            <a href="#query">
+              <span className="nav-icon">📝</span>
+              <span>Query</span>
+            </a>
+          </li>
+          <li>
+            <a href="#canvas">
+              <span className="nav-icon">📊</span>
+              <span>Canvas</span>
+            </a>
+          </li>
         </ul>
       </nav>
     </aside>

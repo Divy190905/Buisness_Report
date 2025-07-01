@@ -1,27 +1,71 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-  }
-  
-  .main-content {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-  }
-  
-  .content-area {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    overflow-y: auto;
-  }
-  
-  .upload-result-container {
-    display: flex;
-    gap: 1rem;
-    flex: 1;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--bg-primary);
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background-color: var(--bg-primary);
+}
+
+.upload-result-container {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.top-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.query-section-wrapper {
+  margin-bottom: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.canvas-section-wrapper {
+  flex-grow: 1;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  min-height: 50vh;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}

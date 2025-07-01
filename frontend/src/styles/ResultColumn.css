@@ -1,9 +1,9 @@
 .result-column {
   flex: 1;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 2rem;
-  background-color: #ffffff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  background-color: var(--bg-secondary, #1f1f1f);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   margin: 1rem;
   transition: all 0.3s ease;
   display: flex;
@@ -12,8 +12,8 @@
 
 .result-column h2 {
   margin-bottom: 1.5rem;
-  color: #2c3e50;
-  font-weight: 600;
+  color: var(--accent-primary, #4ecdc4);
+  font-weight: 700;
   position: relative;
 }
 
@@ -24,60 +24,58 @@
   left: 0;
   width: 40px;
   height: 3px;
-  background: #4ecdc4;
+  background: var(--accent-primary, #4ecdc4);
   border-radius: 2px;
 }
 
 /* Scrollable summary container */
 .result-scroll-box {
-  max-height: 450px;              /* Scrollable height */
+  max-height: 450px;
   overflow-y: auto;
   padding-right: 1rem;
-  font-size: 1.1rem;              /* Larger font */
+  font-size: 1.05rem;
   line-height: 1.7;
-  color: #4b5563;
-  white-space: pre-line;          /* Preserve line breaks */
+  color: #ddd;
+  white-space: pre-line;
 }
 
-/* Optional: custom scrollbar */
+/* Custom dark scrollbar */
 .result-scroll-box::-webkit-scrollbar {
   width: 8px;
 }
-
 .result-scroll-box::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
+  background-color: #555;
   border-radius: 4px;
 }
-
 .result-scroll-box::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Reuse your existing card styles */
+/* Summary card */
 .result-card {
-  background-color: #f8fafc;
+  background-color: var(--bg-tertiary, #2c2c2c);
   border-radius: 8px;
   padding: 1.5rem;
   margin: 1rem 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border-left: 3px solid #4ecdc4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-left: 3px solid var(--accent-primary, #4ecdc4);
   transition: all 0.3s ease;
   animation: fadeIn 0.5s ease;
 }
 
 .result-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 .result-title {
   font-weight: 600;
-  color: #2c3e50;
+  color: #f0f0f0;
   margin-bottom: 0.5rem;
 }
 
 .result-content {
-  color: #4b5563;
+  color: #cfcfcf;
   line-height: 1.6;
 }
 
@@ -86,15 +84,15 @@
   justify-content: space-between;
   margin-top: 1rem;
   font-size: 0.8rem;
-  color: #64748b;
+  color: #999;
 }
 
 .result-visualization {
-  background-color: #ffffff;
+  background-color: #2a2a2a;
   border-radius: 8px;
   padding: 1rem;
   margin-top: 1.5rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #444;
 }
 
 .no-results {
@@ -104,11 +102,11 @@
   justify-content: center;
   min-height: 200px;
   text-align: center;
-  color: #64748b;
+  color: #888;
 }
 
 .no-results-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #cbd5e1;
+  color: #666;
 }

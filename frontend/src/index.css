@@ -1,6 +1,67 @@
-* {
-  box-sizing: border-box;
+/* ============================================
+   1. THEME VARIABLES
+============================================ */
+
+:root {
+  /* Light Theme (default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --accent-primary: #4361ee;
+  --accent-secondary: #3f37c9;
+  --border-color: #dee2e6;
+  --upload-area-bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --gradient-primary: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+  --footer-bg: #ffffff;   
 }
+
+[data-theme='dark'] {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-tertiary: #2d2d2d;
+  --text-primary: #e9ecef;
+  --text-secondary: #adb5bd;
+  --accent-primary: #4cc9f0;
+  --accent-secondary: #4895ef;
+  --border-color: #4d4d4d;
+  --upload-area-bg: #1e1e1e;
+  --card-bg: #2d2d2d;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+  --gradient-primary: linear-gradient(135deg, #4895ef 0%, #3a0ca3 100%);
+  --footer-bg: #121212;  
+}
+
+/* ============================================
+   2. GLOBAL RESETS & BASE
+============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+/* ============================================
+   3. APP LAYOUT
+============================================ */
 
 .app-container {
   display: flex;
@@ -12,14 +73,13 @@
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  background-color: #f9f9f9;
+  background-color: var(--bg-secondary);
 }
 
 .sidebar {
   width: 200px;
-  min-height: 100%;
-  background-color: #333;
-  color: white;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
 }
 
 .content-area {
@@ -28,6 +88,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: auto;
 }
 
 .top-section {
@@ -40,30 +101,27 @@
 .result-column {
   flex: 1;
   min-width: 300px;
-  background: white;
+  background: var(--card-bg);
   padding: 20px;
   border-radius: 10px;
+  box-shadow: var(--shadow-sm);
 }
 
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+/* ============================================
+   4. TYPOGRAPHY
+============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
 }
 
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+button {
+  cursor: pointer;
+  font-family: inherit;
 }
 
-.main-content {
-  display: flex;
-  flex: 1;
-  overflow: hidden;
-}
 
-.content-area {
-  overflow-y: auto;
+html {
+  scroll-behavior: smooth;
 }
-
