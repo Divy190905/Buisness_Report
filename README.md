@@ -80,6 +80,8 @@ git clone https://github.com/divyansh/DataViz-Studio.git
 cd DataViz-Studio
 
 
+```
+
 ### 2️⃣ Backend Setup (Django + Python)
 
 ```bash
