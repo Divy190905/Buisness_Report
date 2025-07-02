@@ -131,17 +131,6 @@ npm run dev
 
 **Frontend will be running at:** `http://localhost:5173`
 
-## 📁 Important Note About Python Folder
-
-The `python/` folder contains standalone Python scripts for testing and development. This folder is **intentionally ignored** in Git because:
-
-- It contains local development files
-- Sample data that may be large or sensitive
-- Generated outputs that shouldn't be in version control
-- Personal configuration files
-
-If you need the python scripts for development, you can create them locally or they may be provided separately.
-
 ## 🎯 How to Use DataViz Studio
 
 ### Step 1: Upload Your Data
