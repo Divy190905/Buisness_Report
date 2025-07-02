@@ -79,12 +79,6 @@ Before setting up DataViz Studio, ensure you have:
 git clone https://github.com/divyansh/DataViz-Studio.git
 cd DataViz-Studio
 
-# If python folder is already tracked, remove it from Git tracking
-git rm -r --cached python/
-git commit -m "Remove python folder from tracking"
-
-# The python folder will still exist locally but won't be tracked by Git
-```
 
 ### 2️⃣ Backend Setup (Django + Python)
 
