@@ -77,34 +77,51 @@ Before setting up DataViz Studio, ensure you have:
 
 ```bash
 git clone https://github.com/divyansh/DataViz-Studio.git
+```
+
+```bash
 cd DataViz-Studio
-
-
 ```
 
 ### 2️⃣ Backend Setup (Django + Python)
 
+Navigate to backend directory:
 ```bash
-# Navigate to backend directory
 cd backend
+```
 
-# Create and activate virtual environment
+Create virtual environment:
+```bash
 python -m venv venv
+```
 
-# Activate virtual environment
-# On Windows:
+Activate virtual environment on Windows:
+```bash
 venv\Scripts\activate
-# On macOS/Linux:
+```
+
+Or activate on macOS/Linux:
+```bash
 source venv/bin/activate
+```
 
-# Install Python dependencies
+Install Python dependencies:
+```bash
 pip install -r requirements.txt
+```
 
-# Configure environment variables
+Copy environment configuration:
+```bash
 cp .env.example .env
-# Edit .env file with your settings (API keys, etc.)
+```
 
-# Start the Django development server
+Edit the .env file with your preferred editor (example with nano):
+```bash
+nano .env
+```
+
+Start Django development server:
+```bash
 python manage.py runserver
 ```
 
@@ -112,16 +129,18 @@ python manage.py runserver
 
 ### 3️⃣ Frontend Setup (React + Vite)
 
-Open a **new terminal** and run:
-
+Open a new terminal and navigate to frontend directory:
 ```bash
-# Navigate to frontend directory
 cd frontend
+```
 
-# Install Node.js dependencies
+Install Node.js dependencies:
+```bash
 npm install
+```
 
-# Start the development server
+Start development server:
+```bash
 npm run dev
 ```
 
@@ -190,8 +209,9 @@ VITE_DEV_MODE=true
 ```bash
 # Test file upload endpoint
 curl -X GET http://localhost:8000/api/
-# Should return API status
+```
 
+```bash
 # Test with a sample file
 curl -X POST http://localhost:8000/api/upload/ \
   -F "file=@sample.csv"
@@ -269,30 +289,42 @@ fetch('http://localhost:8000/api/query-graph/', {
 
 ### Running in Development Mode
 
+Backend with auto-reload:
 ```bash
-# Backend with auto-reload
-cd backend && python manage.py runserver
+cd backend
+```
 
-# Frontend with hot reload
-cd frontend && npm run dev
+```bash
+python manage.py runserver
+```
 
-# Note: Python standalone scripts are not tracked in Git
-# Create your own python/ folder locally if needed for testing
+Frontend with hot reload:
+```bash
+cd frontend
+```
+
+```bash
+npm run dev
 ```
 
 ### Repository Cleanup
 
-If you've accidentally committed the python folder, clean it up:
+Remove python folder from Git tracking (keeps local files):
+```bash
+git rm -r --cached python/
+```
+
+Add and commit the gitignore changes:
+```bash
+git add .gitignore
+```
 
 ```bash
-# Remove python folder from Git tracking (keeps local files)
-git rm -r --cached python/
-
-# Add and commit the gitignore changes
-git add .gitignore
 git commit -m "Remove python folder from tracking and update gitignore"
+```
 
-# Push changes
+Push changes:
+```bash
 git push origin main
 ```
 
@@ -300,25 +332,26 @@ git push origin main
 
 ### Backend (Django)
 
+Install production server:
 ```bash
-# Install production server
 pip install gunicorn
+```
 
-# Collect static files
+Collect static files:
+```bash
 python manage.py collectstatic
+```
 
-# Run with Gunicorn
+Run with Gunicorn:
+```bash
 gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
 ```
 
 ### Frontend (React)
 
+Build for production:
 ```bash
-# Build for production
 npm run build
-
-# Serve with nginx or similar
-# Build files will be in dist/ directory
 ```
 
 ## 🤝 Contributing
