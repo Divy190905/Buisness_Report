@@ -78,6 +78,12 @@ Before setting up DataViz Studio, ensure you have:
 ```bash
 git clone https://github.com/divyansh/DataViz-Studio.git
 cd DataViz-Studio
+
+# If python folder is already tracked, remove it from Git tracking
+git rm -r --cached python/
+git commit -m "Remove python folder from tracking"
+
+# The python folder will still exist locally but won't be tracked by Git
 ```
 
 ### 2️⃣ Backend Setup (Django + Python)
@@ -124,6 +130,17 @@ npm run dev
 ```
 
 **Frontend will be running at:** `http://localhost:5173`
+
+## 📁 Important Note About Python Folder
+
+The `python/` folder contains standalone Python scripts for testing and development. This folder is **intentionally ignored** in Git because:
+
+- It contains local development files
+- Sample data that may be large or sensitive
+- Generated outputs that shouldn't be in version control
+- Personal configuration files
+
+If you need the python scripts for development, you can create them locally or they may be provided separately.
 
 ## 🎯 How to Use DataViz Studio
 
@@ -274,16 +291,25 @@ cd backend && python manage.py runserver
 # Frontend with hot reload
 cd frontend && npm run dev
 
-# Python scripts (standalone)
-cd python && python main.py
+# Note: Python standalone scripts are not tracked in Git
+# Create your own python/ folder locally if needed for testing
 ```
 
-### Debugging Common Issues
+### Repository Cleanup
 
-1. **CORS Errors**: Check `CORS_ALLOWED_ORIGINS` in backend settings
-2. **File Upload Issues**: Verify `MEDIA_ROOT` permissions
-3. **Chart Generation Errors**: Check Python dependencies in requirements.txt
-4. **API Connection**: Ensure both servers are running on correct ports
+If you've accidentally committed the python folder, clean it up:
+
+```bash
+# Remove python folder from Git tracking (keeps local files)
+git rm -r --cached python/
+
+# Add and commit the gitignore changes
+git add .gitignore
+git commit -m "Remove python folder from tracking and update gitignore"
+
+# Push changes
+git push origin main
+```
 
 ## 🚀 Production Deployment
 

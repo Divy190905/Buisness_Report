@@ -35,12 +35,13 @@ venv.bak/
 # Environment variables
 .env
 **/.env
-python/.env
 backend/api/.env
 backend/.env
 
-# Data directories
-python/.data
+# Python standalone scripts folder (ignore entire folder)
+python/
+python/*
+python/**/*
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -92,10 +93,6 @@ Thumbs.db
 *.doc
 *.pptx
 *.ppt
-
-# Database files
-*.sqlite3
-*.db
 
 # Temporary files
 *.tmp
