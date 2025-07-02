@@ -1,20 +1,65 @@
-# Ignore Python bytecode and cache
+# Python
+__pycache__/
 **/__pycache__/
+*.py[cod]
 **/*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Ignore virtual environments (optional, if you have one)
+# Virtual environments
 venv/
+.venv/
+env/
 .env/
+ENV/
+env.bak/
+venv.bak/
 
-# Specifically ignore the .env inside python/
+# Environment variables
+.env
+**/.env
 python/.env
-
-python/.data
-
-# Ignore backend .env files
 backend/api/.env
 backend/.env
-**/.env
+
+# Data directories
+python/.data
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
 # Media files
 *.jpg
@@ -38,57 +83,7 @@ backend/.env
 *.aac
 *.ogg
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Environment variables
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Large data files
+# Document files
 *.csv
 *.xlsx
 *.xls
@@ -98,11 +93,17 @@ Thumbs.db
 *.pptx
 *.ppt
 
+# Database files
+*.sqlite3
+*.db
+
 # Temporary files
 *.tmp
 *.temp
 *.log
 
-# Database files
-*.sqlite3
-*.db
+# Node.js (if applicable)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
